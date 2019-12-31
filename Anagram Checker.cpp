@@ -2,10 +2,51 @@
 //
 
 #include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+bool checkAnagram(string string1, string string2) 
+{ 
+    // Get lengths of both strings 
+    int n1 = string1.length(); 
+    int n2 = string2.length(); 
+  
+    // If length of both strings is not same, then they 
+    // cannot be anagram 
+    if (n1 != n2) 
+        return false; 
+  
+    // Sort both the strings 
+    sort(string1.begin(), string1.end()); 
+    sort(string2.begin(), string2.end()); 
+  
+    // Compare sorted strings 
+    for (int i = 0; i < n1; i++) 
+        if (string1[i] != string2[i]) 
+            return false; 
+  
+    return true; 
+} 
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    string string1, string2;
+    cout << "Enter String 1: ";
+	cin >> string1;
+	cout << endl << "Enter String 2: " ;
+	cin >> string2;
+	cout << endl;
+	
+    if (checkAnagram(string1, string2))
+    {
+        cout << "The two strings are anagram of each other" << endl;
+    }
+    else
+    {
+        cout << "The two strings are not anagram of each other" << endl;
+    }
+    return 0; 
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
